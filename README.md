@@ -57,7 +57,6 @@ The dataset comprises **52,819 records and 10 attributes**, covering spatial coo
 - **Geographic Coverage:** Multi-country Mediterranean coverage (Spain, France, Italy, Greece, Turkey, Lebanon, Tunisia, Morocco, and Balkan region).
 - **Thematic Scope:** Major pure forest types (broadleaved evergreen, deciduous, coniferous) alongside balanced complementary land-cover classes (cropland, shrubland, grassland, bare soil, wetland, water).
 - **Standardization:** Fully harmonized into a uniform 10-variable tabular schema with 100% data completeness (0% missing values across key fields).
-- **FAIR-aligned Metadata:** Enriched with standardized vocabularies (AGROVOC, EuroVoc, DCAT-AP) and audited for cryptographic integrity via MetaDataXtract.
 
 
 ### [Opción Español]
@@ -73,7 +72,6 @@ El dataset contiene **52.819 registros y 10 variables**, cubriendo coordenadas e
 - **Cobertura Geográfica:** Cobertura multipaís en el Mediterráneo (España, Francia, Italia, Grecia, Turquía, Líbano, Túnez, Marruecos y región balcánica).
 - **Ámbito Temático:** Tipos forestales puros principales (perennifolios de hoja ancha, caducifolios, coníferas) junto a clases complementarias balanceadas de cobertura del suelo (cultivos, matorral, pastizal, suelo desnudo, humedal, agua).
 - **Estandarización:** Totalmente armonizado en un esquema tabular uniforme de 10 variables con 100% de completitud (0% de valores nulos).
-- **Metadatos Alineados con Principios FAIR:** Enriquecido con vocabularios controlados (AGROVOC, EuroVoc, DCAT-AP) y auditado criptográficamente mediante MetaDataXtract.
 
 
 ---
@@ -110,7 +108,7 @@ El dataset contiene **52.819 registros y 10 variables**, cubriendo coordenadas e
 * **Language:** `Spanish`
 
 ### Resumen
-**¿Qué es?:** Un conjunto de datos tabular estructurado y multinactional compuesto por 52.819 observaciones georreferenciadas de tipos de árboles de bosques mediterráneos y categorías asociadas de cobertura del suelo en el sur de Europa, norte de África y Mediterráneo oriental.
+**¿Qué es?:** Un conjunto de datos tabular estructurado y multipaís compuesto por 52.819 observaciones georreferenciadas de tipos de árboles de bosques mediterráneos y categorías asociadas de cobertura del suelo en el sur de Europa, norte de África y Mediterráneo oriental.
 
 **Perfil del Dataset:**
 - **Total de Registros:** 52.819 observaciones
@@ -140,7 +138,7 @@ The dataset was constructed through an integration and quality-control workflow 
 2. **Filtering & Strata Selection (`noMFEmix`):** Mixed-species forest polygons and ambiguous forest transitions were excluded to isolate pure, dominant forest stands and reduce spectral and taxonomic confusion in downstream classification models.
 3. **Class Balancing (`MAJOR_pure_balanced_LC`):** Sample instances across major forest types and surrounding land-cover categories (shrubland, cropland, grassland, bare soil, built) were balanced to mitigate severe class imbalance.
 4. **Coordinate Standardization:** Geographic coordinates were extracted and formatted in decimal degrees (longitude/latitude).
-5. **Automated Metadata Extraction & Quality Audit:** The resulting file was audited using the *MetaDataXtract* pipeline, performing automated schema inference, security scanning (ClamAV & StaticAnalyzer: clean), cryptographic hashing, and semantic grounding (DCAT-AP, AGROVOC, EuroVoc).
+
 
 
 ### [Español]
@@ -155,7 +153,6 @@ El conjunto de datos se construyó mediante un flujo de trabajo de integración 
 2. **Filtrado y Selección de Estratos (`noMFEmix`):** Se excluyeron los polígonos forestales mixtos y las transiciones forestales ambiguas para aislar masas forestales puras dominantes y reducir la confusión espectral y taxonómica en los modelos de clasificación posteriores.
 3. **Balanceo de Clases (`MAJOR_pure_balanced_LC`):** Se balancearon las muestras de los principales tipos forestales y de las categorías circundantes de cobertura del suelo (matorral, cultivo, pastizal, suelo desnudo, edificado) para evitar desequilibrios severos en las clases.
 4. **Estandarización de Coordenadas:** Las coordenadas geográficas fueron extraídas y estructuradas en grados decimales (longitud/latitud).
-5. **Extracción Automatizada de Metadatos y Auditoría:** El archivo final fue auditado mediante la herramienta *MetaDataXtract*, realizando inferencia automática de esquemas, escaneo de seguridad (ClamAV y StaticAnalyzer: limpios), cálculo de hashes criptográficos y vinculación con ontologías estándar (DCAT-AP, AGROVOC, EuroVoc).
 
 ---
 
@@ -167,29 +164,26 @@ El conjunto de datos se construyó mediante un flujo de trabajo de integración 
 
 ### Technical Specifications & Data Dictionary
 
-#### 1. File Specifications & Cryptographic Integrity
+#### 1. File Specifications
 - **Filename:** `MEDITERRANEAN_FOREST_TREE_TYPE_DB_to_model_noMFEmix_MAJOR_pure_balanced_LC.csv`
-- **File Size:** 4,811,148 bytes (~4.59 MB)
-- **MIME Type:** `text/csv`
+- **File Size:** ~4.59 MB (4,811,148 bytes)
+- **Format / MIME Type:** CSV (`text/csv`)
 - **Character Encoding:** UTF-8 with Byte Order Mark (`UTF-8-SIG`)
 - **Field Delimiter:** Semicolon (`;`)
 - **Checksum (SHA-256):** `11f6a081b519777ef8f6fa6195cf8577fcbbd32d077e984c8c7b25685331abbb`
-- **Checksum (MD5):** `1c10a9f6b3ef4a95843e21472fbfeb69`
-- **Checksum (SHA-1):** `ffd8020eba7db7bff35cce020631735ae9cb1de7`
-- **Security Verification:** Validated safe (StaticAnalyzer: passed, ClamAV: clean). Sensitivity classification: public.
 
-#### 2. Quality Metrics (DQV / MetaDataXtract Audit)
-- **Total Rows:** 52,819
-- **Total Columns:** 10
+#### 2. Data Quality Metrics
+- **Total Records:** 52,819
+- **Total Attributes:** 10
 - **Completeness:** 100% (0% null or missing values across all columns)
 - **Consistency:** 100%
-- **Uniqueness:** 100% across composite records
+- **Uniqueness:** 100% distinct records
 
 #### 3. Column Data Dictionary
 | Column Name | Data Type | Null % | Description / Semantic Concept |
 | :--- | :--- | :--- | :--- |
 | `ID` | Integer | 0% | Unique sequential identifier assigned to each record (1 to 52,819). |
-| `Database_origin` | String | 0% | Source database or national repository (AGROVOC `c_16022: provenance`). E.g., Spanish FOR Map, EVA, Greece_FOR_map, Morocco_FOR_inventory, Turkiye_FOR_inventory, Lebanon_LULC2017, NFI_Tunisia. |
+| `Database_origin` | String | 0% | Source database or national repository. E.g., Spanish FOR Map, EVA, Greece_FOR_map, Morocco_FOR_inventory, Turkiye_FOR_inventory, Lebanon_LULC2017, NFI_Tunisia. |
 | `ID_original` | String | 0% | Original identifier from the primary source inventory (enables lineage and traceability). |
 | `longitude` | Decimal / String | 0% | Geographic longitude in decimal degrees (comma `,` decimal separator). |
 | `latitude` | Decimal / String | 0% | Geographic latitude in decimal degrees (comma `,` decimal separator). |
@@ -199,12 +193,7 @@ El conjunto de datos se construyó mediante un flujo de trabajo de integración 
 | `Dataset` | String | 0% | Specific sub-collection or survey name (e.g., CircumMed Pine FOR database, VegItaly, SOPHY France, AMS-VegBank, Albanian Vegetation Database). |
 | `Comments` | String | 0% | Observation notes or remarks (hyphen `-` where no remarks are present). |
 
-#### 4. Controlled Vocabularies & Ontologies
-- **FAO AGROVOC:** `c_9000180` (forest cover), `c_16022` (provenance / origin).
-- **EU EuroVoc:** `1879` (Mediterranean Sea), `1063` (forest).
-- **W3C / DCAT-AP:** Declares `dcat:Dataset`, `dcat:Distribution`, and BIGOWLData `TabularDataSet`.
-
-*-
+---
 
 ### [Español]
 * **Type:** `Technical info`
@@ -212,29 +201,26 @@ El conjunto de datos se construyó mediante un flujo de trabajo de integración 
 
 ### Especificaciones Técnicas y Diccionario de Datos
 
-#### 1. Especificaciones del Archivo e Integridad Criptográfica
+#### 1. Especificaciones del Archivo
 - **Nombre del archivo:** `MEDITERRANEAN_FOREST_TREE_TYPE_DB_to_model_noMFEmix_MAJOR_pure_balanced_LC.csv`
-- **Tamaño del archivo:** 4.811.148 bytes (~4,59 MB)
-- **Tipo MIME:** `text/csv`
+- **Tamaño del archivo:** ~4,59 MB (4.811.148 bytes)
+- **Formato / Tipo MIME:** CSV (`text/csv`)
 - **Codificación:** UTF-8 con marca de orden de bytes (`UTF-8-SIG`)
 - **Delimitador de campos:** Punto y coma (`;`)
 - **Checksum (SHA-256):** `11f6a081b519777ef8f6fa6195cf8577fcbbd32d077e984c8c7b25685331abbb`
-- **Checksum (MD5):** `1c10a9f6b3ef4a95843e21472fbfeb69`
-- **Checksum (SHA-1):** `ffd8020eba7db7bff35cce020631735ae9cb1de7`
-- **Verificación de Seguridad:** Validado seguro (StaticAnalyzer: superado, ClamAV: limpio). Clasificación de sensibilidad: pública.
 
-#### 2. Métricas de Calidad (Auditoría DQV / MetaDataXtract)
+#### 2. Métricas de Calidad de Datos
 - **Filas Totales:** 52.819
 - **Columnas Totales:** 10
 - **Completitud:** 100% (0% de valores nulos o faltantes en todas las columnas)
 - **Consistencia:** 100%
-- **Unicidad:** 100% en registros compuestos
+- **Unicidad:** 100% de registros únicos
 
 #### 3. Diccionario de Datos de Columnas
 | Columna | Tipo de Dato | % Nulos | Descripción / Concepto Semántico |
 | :--- | :--- | :--- | :--- |
 | `ID` | Entero | 0% | Identificador secuencial único asignado a cada registro (1 a 52.819). |
-| `Database_origin` | Cadena | 0% | Base de datos o repositorio de origen (AGROVOC `c_16022: procedencia`). Ej.: Spanish FOR Map, EVA, Greece_FOR_map, Morocco_FOR_inventory, Turkiye_FOR_inventory, Lebanon_LULC2017, NFI_Tunisia. |
+| `Database_origin` | Cadena | 0% | Base de datos o repositorio de origen. Ej.: Spanish FOR Map, EVA, Greece_FOR_map, Morocco_FOR_inventory, Turkiye_FOR_inventory, Lebanon_LULC2017, NFI_Tunisia. |
 | `ID_original` | Cadena | 0% | Identificador original en el inventario primario (garantiza trazabilidad de linaje). |
 | `longitude` | Decimal / Cadena | 0% | Longitud geográfica en grados decimales (separador decimal con coma `,`). |
 | `latitude` | Decimal / Cadena | 0% | Latitud geográfica en grados decimales (separador decimal con coma `,`). |
@@ -244,84 +230,37 @@ El conjunto de datos se construyó mediante un flujo de trabajo de integración 
 | `Dataset` | Cadena | 0% | Subcolección o campaña de muestreo específica (ej.: CircumMed Pine FOR database, VegItaly, SOPHY France, AMS-VegBank, Albanian Vegetation Database). |
 | `Comments` | Cadena | 0% | Notas u observaciones contextuales (guion `-` cuando no hay comentarios). |
 
-#### 4. Vocabularios Controlados y Ontologías
-- **FAO AGROVOC:** `c_9000180` (forest cover / cubierta de bosque), `c_16022` (provenance / procedencia).
-- **EU EuroVoc:** `1879` (Mediterranean Sea / Mar Mediterráneo), `1063` (forest / monte).
-- **W3C / DCAT-AP:** Declara `dcat:Dataset`, `dcat:Distribution`, y BIGOWLData `TabularDataSet`.
-
-
-
----
-
-## 3.4. Additional Description &rarr; Type: `Notes`
-
-### [Inglés]
-* **Type:** `Notes`
-* **Language:** `English`
-
-### Data Provenance, Usage Guidelines, and Limitations
-
-#### 1. Provenance Retention
-Individual records maintain traceable lineage via `Database_origin`, `Dataset`, and `ID_original`. Researchers reusing subsets of this database are requested to cite both this Zenodo deposit and the underlying national inventories or archives (e.g., MFE50, EVA, CircumMed).
-
-#### 2. Spatial Coordinate Notice
-Coordinates are stored as decimal degrees using a comma (`,`) as the decimal separator (e.g., `24,9136`). Users ingesting the data into GIS platforms (QGIS, ArcGIS) or R/Python should ensure proper parsing of the decimal symbol.
-
-#### 3. Temporal Dimension
-The dataset aggregates observations gathered over multiple survey campaigns. As individual collection dates are not explicitly detailed per record, the database represents a spatial distribution rather than a single temporal snapshot.
-
-#### 4. Scientific Disclaimer
-The dataset is provided as a reusable open-access scientific resource. Users remain responsible for evaluating fitness for use in their specific analytical or modeling applications.
-
-
-### [Español]
-* **Type:** `Notes`
-* **Language:** `Spanish`
-
-### Procedencia de Datos, Recomendaciones de Uso y Limitaciones
-
-#### 1. Conservación de la Procedencia
-Los registros individuales mantienen trazabilidad directa mediante los campos `Database_origin`, `Dataset` e `ID_original`. Se solicita a los investigadores que reutilicen subconjuntos de estos datos citar tanto este depósito de Zenodo como los inventarios o repositorios originales correspondientes (p. ej., MFE50, EVA, CircumMed).
-
-#### 2. Aviso sobre Coordenadas Espaciales
-Las coordenadas se almacenan en grados decimales utilizando la coma (`,`) como separador decimal (p. ej., `24,9136`). Los usuarios que carguen los datos en software GIS (QGIS, ArcGIS) o en scripts de R/Python deben asegurarse de configurar la coma como separador decimal al importar.
-
-#### 3. Dimensión Temporal
-El conjunto de datos combina observaciones recolectadas a lo largo de diversas campañas de muestreo. Al no detallarse la fecha individual de recolección de cada observación, el dataset debe interpretarse como una distribución espacial integrada y no como una instantánea temporal única.
-
-#### 4. Exención de Responsabilidad Científica
-El dataset se proporciona como un recurso científico reutilizable en acceso abierto. Los usuarios son responsables de evaluar su idoneidad para sus modelos, análisis ecológicos o aplicaciones de conservación específicas.
-
-
 
 ---
 
 # 4. License (Licencia)
 
 * **License:** `Creative Commons Attribution 4.0 International` (`CC BY 4.0`)
-*(Buscar y seleccionar en el desplegable de licencias de Zenodo)*
 
 ---
 
 # 5. Keywords (Palabras clave)
 
-> Copiar y pegar en el campo de **Keywords** de Zenodo (puedes añadirlas una a una o separadas por coma según el campo):
+> Copiar y pegar en el campo de **Keywords** (puedes añadirlas una a una o separadas por coma según el campo):
 
 
-*-text
-Mediterranean
-Mediterranean forests
-forest cover
-tree species
-tree types
-forest biodiversity
-biodiversity
-ecology
-species distribution modeling
-species distribution
-geospatial data
-provenance
-Mediterranean region
+```text
+Mediterranean, Mediterranean forests, forest cover, tree species, tree types, forest biodiversity, biodiversity, ecology, species distribution modeling, geospatial data, remote sensing, provenance, Mediterranean region
+```
+
+- Mediterranean
+- Mediterranean forests
+- forest cover
+- tree species
+- tree types
+- forest biodiversity
+- biodiversity
+- ecology
+- species distribution modeling
+- geospatial data
+- remote sensing
+- provenance
+- Mediterranean region
 
 
 
@@ -332,3 +271,8 @@ Mediterranean region
 
 * **Language:** `English` (idioma principal de los datos tabulares)
 * **Version:** `1.0.0`
+
+--- 
+# 7. Software
+
+* **Programming language:** CSV
